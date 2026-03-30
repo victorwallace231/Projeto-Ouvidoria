@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal da Ouvidoria - Transparência e Diálogo</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="principal.css">
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="logo">
+                    <img src="/logo2__4_-removebg-preview.png" alt="Logo Dom Walfrido">
+                </span>
+                
+                <span class="fw-bold">OUVIDORIA</span> DW
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-search me-1"></i>Acompanhar Manifestações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-bullseye me-1"></i>Objetivo do Projeto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-success fw-bold" href="#"><i class="fas fa-user-shield me-1"></i>Segurança no Anonimato</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-outline-primary fw-bold px-4 rounded-pill" id="btnNavLogin">
+                            <i class="fas fa-sign-in-alt me-2"></i>Entrar
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Projeto Ouvidoria Digital</h1>
+            <p class="lead mb-5">Sua voz é o motor da nossa evolução. Participe ativamente da nossa gestão.</p>
+            
+            <div class="d-flex justify-content-center flex-wrap">
+                <button class="btn btn-warning btn-main shadow" id="btnManifestar">
+                    <i class="fas fa-paper-plane me-2"></i>Criar Manifestação
+                </button>
+                <button class="btn btn-light btn-main shadow text-primary" id="btnLoginCentral">
+                    <i class="fas fa-user-circle me-2"></i>Acessar Minha Conta
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 info-card">
+                <h2 class="section-title">Como funciona a Ouvidoria?</h2>
+                <div class="row g-4">
+                    <div class="col-md-8">
+                        <p class="text-muted lh-lg">
+                            A Ouvidoria é o canal de comunicação direta entre você e a nossa instituição. Ela atua como uma "ponte", garantindo que suas sugestões, elogios, solicitações, reclamações ou denúncias sejam ouvidas e analisadas pelos setores responsáveis.
+                        </p>
+                        <p class="text-muted lh-lg">
+                            Nosso objetivo é assegurar a transparência, a ética e a melhoria contínua dos nossos serviços, oferecendo uma resposta ágil e imparcial para cada cidadão.
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 border-start border-4 border-warning bg-light">
+                            <h5 class="fw-bold text-dark"><i class="fas fa-clock me-2 text-warning"></i>Prazos</h5>
+                            <p class="small mb-0">Análise inicial em até 48h úteis e resposta final conforme a complexidade do caso.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Projeto Ouvidoria Digital. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#btnNavLogin, #btnLoginCentral').on('click', function() {
+                alert('Redirecionando para a tela de Login...');
+            });
+
+            $('#btnManifestar').on('click', function() {
+                alert('Abrindo formulário de nova manifestação...');
+            });
+            
+            $('.nav-link').on('click', function(e) {
+                const texto = $(this).text().trim();
+                if(texto !== "") {
+                    console.log("Clicou em: " + texto);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
