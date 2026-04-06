@@ -112,11 +112,11 @@ body {
 
         <form id="formLogin" action="verificar.php" method="POST">
             <div class="mb-3">
-                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+                <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" name="email" required>
             </div>
 
             <div class="mb-3">
-                <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+                <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" name="senha" required>
             </div>
 
             <button type="submit" class="btn btn-login w-100">Entrar</button>
@@ -127,27 +127,17 @@ body {
 
             <div class="links">
                 <a href="#">Esqueci minha senha</a>
-                <a href="#">Criar nova conta</a>
+                <a href="criar.html">Criar nova conta</a>
             </div>
         </form>
     </div>
-
     <script>
-        document.getElementById("formLogin").addEventListener("submit", function(e) {
-            e.preventDefault();
+const urlParams = new URLSearchParams(window.location.search);
 
-            const email = document.getElementById("email").value;
-            const senha = document.getElementById("senha").value;
-
-            // Simulação de login (você vai trocar isso pelo backend depois)
-            if(email === "admin@email.com" && senha === "1234") {
-                alert("Login realizado com sucesso!");
-            } else {
-                document.getElementById("erroMsg").style.display = "block";
-            }
-        });
-    </script>
-
+if (urlParams.get('erro')) {
+    document.getElementById("erroMsg").style.display = "block";
+}
+</script>
 </body>
 </html>
 

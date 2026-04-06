@@ -1,4 +1,3 @@
-
 <?php
 
 // conexão com o banco
@@ -6,8 +5,9 @@ $host = "127.0.0.1";
 $user = "root";
 $pass = "";
 $db = "dbouvidoria";
+$porta = "3307";
 
-$conn = new mysqli($host, $user, $pass, $db);
+$conn = new mysqli($host, $user, $pass, $db, $porta);
 
 // verifica conexão
 if ($conn->connect_error) {
@@ -20,6 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // pega dados do form
     $nome = $_POST["nome"];
     $email = $_POST["email"];
+    $matricula = $_POST["matricula"];
+    $serie = $_POST["serie"];
+    $curso = $_POST["curso"];
     $senha = $_POST["senha"];
 
     // 🔐 cria hash da senha
@@ -36,9 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // insere no banco
-    $stmt = $conn->prepare("INSERT INTO tbusuario (Nome, Email, senha) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $nome, $email, $senhaHash);
+    // insere no banco com TODOS os campos
+    $stmt = $conn->prepare("
+        INSERT INTO tbusuario (Nome, Serie, Curso, Matricula, Email, senha) 
+        VALUES (?, ?, ?, ?, ?, ?)
+    ");
+
+    $stmt->bind_param("sissss", $nome, $serie, $curso, $matricula, $email, $senhaHash);
 
     if ($stmt->execute()) {
         // sucesso → volta pro login
