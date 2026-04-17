@@ -9,18 +9,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        *{
-    padding: 0;
-    margin: 0;
-}
+        *{ padding: 0; margin: 0; }
 
-
-:root {
-            /* Alterado para tons de Verde e Laranja */
-            --primary-color: #1b5e20; /* Verde Escuro */
-            --primary-light: #2e7d32; /* Verde Médio */
+        :root {
+            --primary-color: #1b5e20;
+            --primary-light: #2e7d32;
             --secondary-color: #f8f9fa;
-            --accent-color: #fb8c00; /* Laranja */
+            --accent-color: #fb8c00;
             --accent-hover: #ef6c00;
         }
 
@@ -29,25 +24,14 @@
             background-color: var(--secondary-color);
         }
 
-        /* Navbar */
         .navbar {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .navbar-brand img {
-            max-height: 50px;
-        }
-        .navbar-brand .text-primary {
-            color: var(--primary-color) !important;
-        }
-        .nav-link {
-            color: #555 !important;
-            font-weight: 500;
-            margin: 0 5px;
-        }
-        .nav-link:hover {
-            color: var(--primary-light) !important;
-        }
+        .navbar-brand img { max-height: 50px; }
+        .navbar-brand .text-primary { color: var(--primary-color) !important; }
+        .nav-link { color: #555 !important; font-weight: 500; margin: 0 5px; }
+        .nav-link:hover { color: var(--primary-light) !important; }
         .btn-outline-primary {
             color: var(--primary-color);
             border-color: var(--primary-color);
@@ -58,16 +42,13 @@
             color: white;
         }
 
-        /* Hero Section */
         .hero-section {
             padding: 80px 0;
-            /* Gradiente em tons de verde */
             background: linear-gradient(135deg, #1b5e20 0%, #0a330c 100%);
             color: white;
             text-align: center;
         }
 
-        /* Botões Centrais */
         .btn-main {
             padding: 15px 35px;
             font-size: 1.2rem;
@@ -81,19 +62,13 @@
             background-color: var(--accent-color);
             color: white;
         }
-        .btn-warning:hover {
-            background-color: var(--accent-hover);
-            color: white;
-        }
+        .btn-warning:hover { background-color: var(--accent-hover); color: white; }
         .btn-main:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        .text-primary {
-            color: var(--primary-color) !important;
-        }
+        .text-primary { color: var(--primary-color) !important; }
 
-        /* Seção Informativa */
         .info-card {
             background: white;
             border-radius: 15px;
@@ -111,55 +86,28 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
+            bottom: 0; left: 0;
+            width: 60px; height: 3px;
             background-color: var(--accent-color);
         }
-
-        .border-warning {
-            border-color: var(--accent-color) !important;
-        }
+        .border-warning { border-color: var(--accent-color) !important; }
 
         footer {
             padding: 20px 0;
             background: #1a1a1a;
             color: #ccc;
         }
-        .logo{
-            margin-left: 5px;
-            margin-right: 10px;
-        }
+        .logo { margin-left: 5px; margin-right: 10px; }
 
         @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.navbar {
-    animation: fadeIn 0.8s ease-in-out;
-}
-
-.hero-section h1 {
-    animation: fadeIn 1s ease-in-out;
-}
-
-.hero-section p {
-    animation: fadeIn 1.2s ease-in-out;
-}
-
-.btn-main {
-    animation: fadeIn 1.4s ease-in-out;
-}
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .navbar { animation: fadeIn 0.8s ease-in-out; }
+        .hero-section h1 { animation: fadeIn 1s ease-in-out; }
+        .hero-section p  { animation: fadeIn 1.2s ease-in-out; }
+        .btn-main        { animation: fadeIn 1.4s ease-in-out; }
     </style>
-
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
@@ -168,7 +116,6 @@
                 <span class="logo">
                     <img src="logo2__4_-removebg-preview.png" alt="Logo Dom Walfrido" class="logo">
                 </span>
-                
                 <span class="fw-bold">OUVIDORIA</span> DW
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -187,8 +134,7 @@
                     </li>
                     <li class="nav-item ms-lg-3">
                         <button class="btn btn-outline-primary fw-bold px-4 rounded-pill" id="btnNavLogin">
-                            <i class="fas fa-sign-in-alt me-2"></i>
-                            Entrar
+                            <i class="fas fa-sign-in-alt me-2"></i>Entrar
                         </button>
                     </li>
                 </ul>
@@ -247,53 +193,49 @@
 
     <script>
     $(document).ready(function() {
-
-        // BOTÕES DE LOGIN
         $('#btnNavLogin, #btnLoginCentral').on('click', function() {
             window.location.href = "login.html";
         });
 
-        // BOTÃO MANIFESTAÇÃO (abre modal)
         $('#btnManifestar').on('click', function() {
             $('#modalAnonimo').modal('show');
         });
-
     });
-</script>
-<div class="modal fade" id="modalAnonimo" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content rounded-4">
+    </script>
 
-      <div class="modal-header">
-        <h5 class="modal-title text-warning fw-bold">
-          <i class="fas fa-exclamation-triangle me-2"></i>Aviso
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <!-- MODAL ANÔNIMO -->
+    <div class="modal fade" id="modalAnonimo" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+
+          <div class="modal-header">
+            <h5 class="modal-title text-warning fw-bold">
+              <i class="fas fa-exclamation-triangle me-2"></i>Aviso
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body text-center">
+            <p class="mb-3">Você não está logado.</p>
+            <p class="text-muted">
+              Sua manifestação será <strong>anônima</strong>.<br>
+              Caso queira identificar-se, utilize a opção <strong>"Acessar Minha Conta"</strong>.
+            </p>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <!-- ✅ ALTERADO: agora leva para criarmanifest.php com flag anonimo=1 -->
+            <button class="btn btn-warning px-4" onclick="window.location.href='criarmanifest.php?anonimo=1'">
+              Continuar Anônimo
+            </button>
+
+            <button class="btn btn-outline-primary px-4" onclick="window.location.href='login.html'">
+              Fazer Login
+            </button>
+          </div>
+
+        </div>
       </div>
-
-      <div class="modal-body text-center">
-        <p class="mb-3">
-          Você não está logado.
-        </p>
-
-        <p class="text-muted">
-          Sua manifestação será <strong>anônima</strong>.<br>
-          Caso queira identificar-se, utilize a opção <strong>"Acessar Minha Conta"</strong>.
-        </p>
-      </div>
-
-      <div class="modal-footer justify-content-center">
-        <button class="btn btn-warning px-4" onclick="window.location.href='manifestacao.html'">
-          Continuar Anônimo
-        </button>
-
-        <button class="btn btn-outline-primary px-4" onclick="window.location.href='login.html'">
-          Fazer Login
-        </button>
-      </div>
-
     </div>
-  </div>
-</div>
 </body>
 </html>

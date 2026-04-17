@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Protege a página — redireciona se não estiver logado
+if (!isset($_SESSION["id"])) {
+    header("Location: login.html");
+    exit();
+}
+
+$nomeUsuario     = htmlspecialchars($_SESSION["nome"]);
+$matriculaUsuario = htmlspecialchars($_SESSION["matricula"] ?? "");
+$emailUsuario    = htmlspecialchars($_SESSION["email"] ?? "");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -118,6 +131,21 @@
             margin-top: 15px;
         }
 
+        /* AVATAR INICIAL */
+        .user-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
         /* ANIMAÇÃO */
         @keyframes fadeIn {
             from {opacity: 0; transform: translateY(15px);}
@@ -136,18 +164,27 @@
                 <span class="fw-bold">OUVIDORIA</span>&nbsp;DW
             </a>
 
-            <div class="ms-auto d-flex align-items-center">
+            <div class="ms-auto d-flex align-items-center gap-3">
 
-                <!-- USUÁRIO -->
-                <div class="me-3 text-end">
-                    <div><strong id="nomeUsuario">Usuário</strong></div>
-                    <small id="matriculaUsuario">Matrícula</small>
+                <!-- USUÁRIO (vindo da sessão PHP) -->
+                <div class="d-flex align-items-center gap-2">
+                    <div class="user-avatar">
+                        <?php echo mb_strtoupper(mb_substr($nomeUsuario, 0, 1, 'UTF-8'), 'UTF-8'); ?>
+                    </div>
+                    <div class="text-end">
+                        <div><strong><?php echo $nomeUsuario; ?></strong></div>
+                        <?php if ($matriculaUsuario): ?>
+                            <small class="text-muted"><?php echo $matriculaUsuario; ?></small>
+                        <?php else: ?>
+                            <small class="text-muted"><?php echo $emailUsuario; ?></small>
+                        <?php endif; ?>
+                    </div>
                 </div>
 
                 <!-- SAIR -->
-                <button class="btn btn-outline-danger" id="btnSair">
+                <a href="logout.php" class="btn btn-outline-danger">
                     Sair
-                </button>
+                </a>
 
             </div>
         </div>
@@ -160,9 +197,9 @@
         <div class="sidebar">
             <h6>Menu</h6>
 
-            <a href="criarmanifest.html">Nova Manifestação</a>
-            <a href="manifests.html">Minhas Manifestações</a>
-            <a href="protocolos.html">Acompanhar Protocolo</a>
+            <a href="criarmanifest.php">Nova Manifestação</a>
+            <a href="manifests.php">Minhas Manifestações</a>
+            <a href="protocolos.php">Acompanhar Protocolo</a>
             <a href="#">Perfil</a>
         </div>
 
@@ -171,9 +208,9 @@
 
             <!-- BOAS VINDAS -->
             <div class="card-painel">
-                <h4 class="titulo">Bem-vindo ao sistema de Ouvidoria</h4>
+                <h4 class="titulo">Bem-vindo, <?php echo $nomeUsuario; ?>!</h4>
 
-                <a href="criarmanifest.html" class="btn-main text-decoration-none d-inline-block">
+                <a href="criarmanifest.php" class="btn-main text-decoration-none d-inline-block">
                     Registrar Manifestação
                 </a>
             </div>
@@ -191,15 +228,13 @@
                         </tr>
                     </thead>
 
-                    <tbody id="tabelaManifestacoes">
-
-                        <!-- VAZIO (vai vir do banco depois) -->
+                    <tbody>
+                        <!-- Aqui virão os dados do banco futuramente -->
                         <tr>
                             <td colspan="3" class="text-center text-muted">
                                 Nenhuma manifestação encontrada.
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
 
@@ -208,17 +243,5 @@
         </div>
     </div>
 
-    <script>
-        // 🔴 SIMULAÇÃO (depois vira PHP)
-        document.getElementById("nomeUsuario").innerText = "Victor Oseias";
-        document.getElementById("matriculaUsuario").innerText = "20231234";
-
-        // 🔴 SAIR
-        document.getElementById("btnSair").addEventListener("click", function() {
-            alert("Logout realizado!");
-            window.location.href = "index.html";
-        });
-    </script>
-
 </body>
-</html> 
+</html>
